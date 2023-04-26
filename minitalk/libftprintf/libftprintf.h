@@ -6,7 +6,7 @@
 /*   By: lnitu <lnitu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:20:56 by lnitu             #+#    #+#             */
-/*   Updated: 2023/04/26 14:44:16 by lnitu            ###   ########.fr       */
+/*   Updated: 2023/04/26 15:25:46 by lnitu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <signal.h>
+# include <stddef.h>
+# include <stdlib.h>
 
 size_t	ft_strlen(char const *str);
 int		ft_puutnbr(int n);
