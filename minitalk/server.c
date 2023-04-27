@@ -6,7 +6,7 @@
 /*   By: lnitu <lnitu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:46:32 by lnitu             #+#    #+#             */
-/*   Updated: 2023/04/26 15:34:50 by lnitu            ###   ########.fr       */
+/*   Updated: 2023/04/27 10:56:53 by lnitu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 void	bit_handler(int bit)
 {
-	int	i;
+	static int	x;
+	static int	y;
 
-	i = 0;
-	g_msg.c += ((bit & 1) << g_msg.i);
-	g_msg.i++;
-	if (g_msg.i == 7)
+	if (bit == SIGUSR1)
 	{
-		ft_printf("%c", g_msg.c);
-		if (!g_msg.c)
-			ft_printf("\n");
-		g_msg.c = 0;
-		g_msg.i = 0;
+		y *= 2;
+		y += 1;
+		x++;
+	}
+	else
+	{
+		x++;
+		y *= 2;
+	}
+	if (x == 8)
+	{
+		ft_printf("%c", y);
+		x = 0;
+		y = 0;
 	}
 }
 

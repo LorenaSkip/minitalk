@@ -6,7 +6,7 @@
 /*   By: lnitu <lnitu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:01:31 by lnitu             #+#    #+#             */
-/*   Updated: 2023/04/26 14:44:07 by lnitu            ###   ########.fr       */
+/*   Updated: 2023/04/27 11:01:20 by lnitu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 int	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		sign;
-	size_t	num;
+	int	i;
+	int	j;
+	int	segn;
+	int	check;
 
-	num = 0;
+	check = 0;
 	i = 0;
-	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v'
-		|| str[i] == '\r' || str[i] == '\f' || str[i] == '\n')
+	j = 0;
+	segn = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-')
+	while (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
-		i++;
+		if (str[i++] == '-')
+			segn = -1;
+			check++;
 	}
-	else if (str[i] == '+')
-		i++;
+	if (check > 1)
+		return (j);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = (num * 10) + (str[i] - '0');
+		j = j * 10 + (str[i] - '0');
 		i++;
 	}
-	return (num * sign);
+	return (j * segn);
 }
